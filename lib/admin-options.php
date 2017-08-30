@@ -45,16 +45,23 @@ if($filestack_options_post){
 
 <style>
 .options-form-wrap,
-.shortcode-notes-wrap {
+.shortcode-notes-wrap,
+.callbacks-notes-wrap {
 	padding: 5px 25px 20px;
 	background-color: white;
 	border: 1px solid #dedede;
 	border-radius: 5px;
 }
 
-.shortcode-notes .col1 {
+.shortcode-notes .col1,
+.callbacks-notes .col1 {
 	min-width: 320px;
 	vertical-align: top;
+}
+
+.shortcode-notes td,
+.callbacks-notes td {
+	padding-bottom: 15px;
 }
 
 .options-table th {
@@ -66,7 +73,7 @@ if($filestack_options_post){
 	vertical-align: top;
 }
 
-.options-table td.col2 {
+td.col2 {
 	padding-left: 20px;
 	width: 50%;
 }
@@ -102,8 +109,23 @@ hr.section-separator {
 	}
 
 	.options-form-wrap,
-	.shortcode-notes-wrap {
-		padding: 0;
+	.shortcode-notes-wrap,
+	.callbacks-notes-wrap {
+		padding: 10px;
+	}
+
+	td, th {
+		display: block;
+	}
+
+	td.col2 {
+		padding: 10px;
+		width: 90%;
+	}
+
+	.options-table .text-field,
+	select.large-text {
+		width: 90%;
 	}
 }
 </style>
@@ -112,6 +134,8 @@ hr.section-separator {
 
 	<div class="icon32" id="icon-options-general"><br></div>
 	<h2><?php _e('Filestack Wordpress Upload Settings', 'filestack') ?></h2>
+
+	<br/>
 
 	<div id="filestack-options-form">
 
@@ -416,15 +440,6 @@ hr.section-separator {
 	          </td>
 	        </tr>
 
-	        <!-- Callback Handlers -->
-
-	        <tr>
-	          <td colspan="2">
-	          	<hr class="section-separator" />
-	          	<h3 class="section-title">Callback Handlers</h3>
-	          </td>
-	        </tr>
-
 	        <tr>
           <td colspan="2">
             <input type="submit" value="Save Settings" class="button-primary"/>
@@ -433,6 +448,104 @@ hr.section-separator {
         </tbody>
         </table>
 			</form>
+		</div>
+
+		<p style="text-align: left;">
+			<h3>Callback Handlers</h3>
+		</p>
+
+		<div class="callbacks-notes-wrap">
+			<table class="callbacks-notes">
+				<tbody>
+				<tr>
+					<td colspan="2">
+						You can add javascript code to the following callback functions
+						to handle the responses from Filestack after an event is triggered.
+						<br/>
+						These callback functions are declared in the file:<br/>
+						<br/>
+						<a href="/wp-admin/plugin-editor.php?file=filestack-wordpress-upload%2Fjs%2Ffilestack-callbacks.js&plugin=filestack-wordpress-upload%2Ffilestack-wordpress-upload.php"><i>/wp-content/plugins/filestack-wordpress-upload/js/filestack-callbacks.js</i></a>
+						<br/>
+						<hr/>
+					</td>
+				</tr>
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnFileSelected(file)
+					</td>
+					<td class="col2" valign="top">
+						 Called whenever user selects a file. The callback has a file parameter object that contains the filename, mimetype, size in bytes, and source.
+					</td>
+				</tr>
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnFileUploadStarted(file)
+					</td>
+					<td class="col2" valign="top">
+						  Called when a file begins uploading. The callback has a file parameter object that contains the filename, mimetype, size in bytes, and source.
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnFileUploadProgress(file, progressEvent)
+					</td>
+					<td class="col2" valign="top">
+						  Called during multi-part upload progress events. Progress events fire on every XHR progress event, but these progress events will not fire while background uploads are happening. They will also not fire for files selected from cloud sources like google drive. They only fire for files selected from the local file system.<br/>
+						  <br/>
+							The callback has two parameters, file which is an object containing file metadata (filename, mimetype, size in bytes, and source) and the progressEvent which contains the following:<br/>
+							<br/>
+							totalPercent	The percent (as an integer) of the file that has been uploaded.<br/>
+							totalBytes	An integer stating the total number of bytes uploaded for this file.
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnUploadFinished(file)
+					</td>
+					<td class="col2" valign="top">
+						  Called when a file is done uploading. The callback has a file parameter object that contains the filename, mimetype, size in bytes, and source.
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnFileUploadFailed(file, error)
+					</td>
+					<td class="col2" valign="top">
+						  Called when uploading a file fails. The callback has two parameters: file, an object that contains file metadata (filename, mimetype, size in bytes, and source), and error, the Error instance for this upload.
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnUploadStarted()
+					</td>
+					<td class="col2" valign="top">
+						  Called when the upload begins. This callback has a files parameter array that contains all files selected for upload.
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnOpen()
+					</td>
+					<td class="col2" valign="top">
+						  Called when the file uploader modal is opened.
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col1" valign="top">
+						filestackOnClose()
+					</td>
+					<td class="col2" valign="top">
+						  Called when the file uploader modal is closed.
+					</td>
+				</tr>
+				</tbody>
+			</table>
 		</div>
 
 		<p style="text-align: left;">
@@ -460,10 +573,44 @@ hr.section-separator {
 				</tr>
 				<tr>
 					<td class="col1">
-						You can customize the appearance of the button by overriding declaring css attributes
-						for the fpclass in the styles.css file of your active theme.  See example.
+						[filestack post_id=1 media_category='2345']
 					</td>
 					<td class="col2">
+						In this example, we assign the media_category taxonomy value to the uploaded file.  This is useful if you want to display only images in this
+						category via the <i>[gallery]</i> shortcode using plugins such as <a href="https://wordpress.org/plugins/enhanced-media-library/" target="_blank">Enhanced Media Library</a>.<br/>
+						<i>e.g. the shortcode: <br/>
+						[gallery media_category="2054" order="DESC" orderby="ID"]</i><br/>
+						will display the gallery of all the media tagged in that category.
+					</td>
+				</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+		<p style="text-align: left;">
+			<h3>Customizing Appearance Using CSS</h3>
+		</p>
+
+		<div class="callbacks-notes-wrap">
+			<table class="callbacks-notes">
+				<tbody>
+				<tr>
+					<td colspan="2">
+						You can customize the appearance of the Upload button and Modal by overriding
+						their css attributes in the following file:<br/>
+						<br>
+						<a href="/wp-admin/plugin-editor.php?file=filestack-wordpress-upload%2Fcss%2Ffilestack_style.css&plugin=filestack-wordpress-upload%2Ffilestack-wordpress-upload.php"><i>/wp-content/plugins/filestack-wordpress-upload]/css/filestack_style.css</i></a>.
+						<br/>
+						<hr/>
+					</td>
+				</tr>
+				<tr>
+					<td class="col1" valign="top">
+						Upload Button
+					</td>
+					<td class="col2" valign="top">
+						Example:<br/>
 <pre>.fp-pick {
   width: 100px;
   height: 80px;
@@ -482,6 +629,41 @@ hr.section-separator {
 .fp-pick:hover {
   background: pink;
   color: red;
+}</pre>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col1" valign="top">
+						Upload Modal (Window)
+					</td>
+					<td class="col2" valign="top">
+						Example:<br/>
+<pre>.fsp-header {
+  background-color: black !important;
+  color: white !important;
+}
+
+.fsp-modal__sidebar {
+  background-color: pink !important;
+}
+
+.fsp-source-list__item.active {
+  background-color: pink !important;
+}
+
+.fsp-drop-area-container {
+  background-color: red !important;
+}
+
+.fsp-drop-area {
+  background-color: green !important;
+}
+
+.fsp-text__title {
+  color: white !important;
+  text-transform: uppercase;
+  font-size: 24px !important;
 }</pre>
 					</td>
 				</tr>

@@ -29,8 +29,9 @@ window.filestackOnFileUploadStarted = function(file) {
  * totalPercent  The percent (as an integer) of the file that has been uploaded.
  * totalBytes  An integer stating the total number of bytes uploaded for this file.
  */
-window.filestackOnFileUploadProgress = function(file) {
+window.filestackOnFileUploadProgress = function(file, progressEvent) {
     // console.log(file);
+    // console.log(progressEvent);
 }
 
 /*
@@ -69,14 +70,14 @@ window.filestackOnUploadStarted = function() {
 }
 
 /*
- * Called when the file uploader is opened.
+ * Called when the file uploader modal is opened.
  */
 window.filestackOnOpen = function() {
     // console.log("filestackOnOpen called...");
 }
 
 /*
- * Called when the file uploader is closed.
+ * Called when the file uploader modal is closed.
  */
 window.filestackOnClose = function() {
     // console.log("filestackOnClose called...");
