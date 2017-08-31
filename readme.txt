@@ -1,9 +1,9 @@
-=== Filestack ===
-Contributors: hueyl77
+=== Filestack Wordpress Upload ===
+Contributors: hueyl77, kminnick
 Tags: file upload filestack media cdn uploader facebook dropbox google-drive box skydrive instagram picasa instagram flickr github evernote alfresco
-Requires at least: 3.0.1
+Requires at least: 4.0.1
 Tested up to: 4.7
-Stable tag: 1.0.0
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,9 +32,10 @@ You can store assets conveniently with Filestack or in your own cloud storage lo
 1. Cloud Storage Integrations with Amazon S3, Microsoft Azure, Dropbox, Rackspace and Google Cloud Storage.
 
 ### Links
-https://www.filestack.com
-https://www.filestack.com/docs/getting-started
-https://www.filestack.com/docs/javascript-api/pick-v3
+[https://www.filestack.com](https://www.filestack.com)
+[https://www.filestack.com/docs/javascript-api/pick-v3](https://www.filestack.com/docs/javascript-api/pick-v3)
+[Free API Key](https://dev.filestack.com/register)
+
 
 ### Languages
 1. English: 'en'
@@ -107,10 +108,24 @@ following cloud storage services:
 
 == Screenshots ==
 
-1. Admin Settings
-1. Media Upload Integration
+1. File Uploader Modal
+1. Search the Web
+1. Settings Page
+1. Integrated Cloud Services
+1. Cropping Tool
+1. Circle Tool
+1. Response Metadata
 
 == Changelog ==
+
+= 1.0.3 =
+* Bugfix: undefined callbacks on Media Assets page
+
+= 1.0.2 =
+* Updated Plugin Title
+
+= 1.0.1 =
+* Added assets screenshots banners and icons
 
 = 1.0.0 =
 * Initial Wordpress.com version

@@ -118,14 +118,30 @@ filestackForWordpress.pick = function( filestack_options )
         options.storeTo = store_to;
     }
 
-    options.onFileSelected = window.filestackOnFileSelected;
-    options.onFileUploadStarted = window.filestackOnFileUploadStarted;
-    options.onFileUploadProgress = window.filestackOnFileUploadProgress;
-    options.onFileUploadFinished = window.filestackOnUploadFinished;
-    options.onFileUploadFailed = window.filestackOnFileUploadFailed;
-    options.onUploadStarted = window.filestackOnUploadStarted;
-    options.onOpen = window.filestackOnOpen;
-    options.onClose = window.filestackOnClose;
+    if (window.filestackOnFileSelected) {
+        options.onFileSelected = window.filestackOnFileSelected;
+    }
+    if (window.filestackOnFileUploadStarted) {
+        options.onFileUploadStarted = window.filestackOnFileUploadStarted;
+    }
+    if (window.filestackOnFileUploadProgress) {
+        options.onFileUploadProgress = window.filestackOnFileUploadProgress;
+    }
+    if (window.filestackOnUploadFinished) {
+        options.onFileUploadFinished = window.filestackOnUploadFinished;
+    }
+    if (window.filestackOnFileUploadFailed) {
+        options.onFileUploadFailed = window.filestackOnFileUploadFailed;
+    }
+    if (window.filestackOnUploadStarted) {
+        options.onUploadStarted = window.filestackOnUploadStarted;
+    }
+    if (window.filestackOnOpen) {
+        options.onOpen = window.filestackOnOpen;
+    }
+    if (window.filestackOnClose) {
+        options.onClose = window.filestackOnClose;
+    }
 
     filestack.pick(options).then(function (result) {
         var files_uploaded = result.filesUploaded;

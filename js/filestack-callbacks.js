@@ -41,13 +41,12 @@ window.filestackOnFileUploadProgress = function(file, progressEvent) {
 window.filestackOnUploadFinished = function(file) {
     // console.log(file);
 
-    /* comment out below to see example code to refresh the page after upload */
+    /* uncomment out below to see example code to refresh the page after upload */
 
-    /*
-    setTimeout(function(){
-      window.location.reload(true);
-    }, 1000);
-    */
+    // setTimeout(function(){
+    //   window.location.reload(true);
+    // }, 1000);
+
 }
 
 /*
@@ -74,6 +73,7 @@ window.filestackOnUploadStarted = function() {
  */
 window.filestackOnOpen = function() {
     // console.log("filestackOnOpen called...");
+alert("Yayayayayaya let's upload somesing!");
 }
 
 /*

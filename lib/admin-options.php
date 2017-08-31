@@ -464,7 +464,7 @@ hr.section-separator {
 						<br/>
 						These callback functions are declared in the file:<br/>
 						<br/>
-						<a href="/wp-admin/plugin-editor.php?file=filestack-wordpress-upload%2Fjs%2Ffilestack-callbacks.js&plugin=filestack-wordpress-upload%2Ffilestack-wordpress-upload.php"><i>/wp-content/plugins/filestack-wordpress-upload/js/filestack-callbacks.js</i></a>
+						<a href="/wp-admin/plugin-editor.php?file=filestack-upload%2Fjs%2Ffilestack-callbacks.js&plugin=filestack-upload%2Ffilestack-wordpress-upload.php"><i>/wp-content/plugins/filestack-upload/js/filestack-callbacks.js</i></a>
 						<br/>
 						<hr/>
 					</td>
@@ -600,7 +600,7 @@ hr.section-separator {
 						You can customize the appearance of the Upload button and Modal by overriding
 						their css attributes in the following file:<br/>
 						<br>
-						<a href="/wp-admin/plugin-editor.php?file=filestack-wordpress-upload%2Fcss%2Ffilestack_style.css&plugin=filestack-wordpress-upload%2Ffilestack-wordpress-upload.php"><i>/wp-content/plugins/filestack-wordpress-upload]/css/filestack_style.css</i></a>.
+						<a href="/wp-admin/plugin-editor.php?file=filestack-upload%2Fcss%2Ffilestack_style.css&plugin=filestack-upload%2Ffilestack-wordpress-upload.php"><i>/wp-content/plugins/filestack-upload/css/filestack_style.css</i></a>.
 						<br/>
 						<hr/>
 					</td>
